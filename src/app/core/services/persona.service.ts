@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalDatabase } from './local-database.service';
-import { Persona } from '../models/persona.model';
+import { Persona } from '../interfaces/persona.model';
 
 @Injectable({
   providedIn: 'root'

@@ -1,19 +1,19 @@
-import { Alquiler } from '../models/alquiler.model';
-import { Ambiente } from '../models/ambiente.model';
-import { MedioPago } from '../models/medio-pago.model';
-import { MedioPagoUsuario } from '../models/medio-pago-usuario.model';
-import { Pago } from '../models/pago.model';
-import { Persona } from '../models/persona.model';
-import { PlanCuota } from '../models/plan-cuota.model';
-import { PoliticaRegla } from '../models/politica-regla.model';
-import { Propiedad } from '../models/propiedad.model';
-import { Reembolso } from '../models/reembolso.model';
-import { Rol } from '../models/rol.model';
-import { Solicitud } from '../models/solicitud.model';
-import { TipoPeriodo } from '../models/tipo-periodo.model';
-import { TipoPropiedad } from '../models/tipo-propiedad.model';
-import { Ubicacion } from '../models/ubicacion.model';
-import { Usuario } from '../models/usuario.model';
+import { Alquiler } from '../interfaces/alquiler.model';
+import { Ambiente } from '../interfaces/ambiente.model';
+import { MedioPago } from '../interfaces/medio-pago.model';
+import { MedioPagoUsuario } from '../interfaces/medio-pago-usuario.model';
+import { Pago } from '../interfaces/pago.model';
+import { Persona } from '../interfaces/persona.model';
+import { PlanCuota } from '../interfaces/plan-cuota.model';
+import { PoliticaRegla } from '../interfaces/politica-regla.model';
+import { Propiedad } from '../interfaces/propiedad.model';
+import { Reembolso } from '../interfaces/reembolso.model';
+import { Rol } from '../interfaces/rol.model';
+import { Solicitud } from '../interfaces/solicitud.model';
+import { TipoPeriodo } from '../interfaces/tipo-periodo.model';
+import { TipoPropiedad } from '../interfaces/tipo-propiedad.model';
+import { Ubicacion } from '../interfaces/ubicacion.model';
+import { Usuario } from '../interfaces/usuario.model';
 
 export class LocalDatabase {
   alquileres: Alquiler[] = [];

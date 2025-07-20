@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalDatabase } from './local-database.service';
-import { Ubicacion } from '../models/ubicacion.model';
+import { Ubicacion } from '../interfaces/ubicacion.model';
 
 @Injectable({
   providedIn: 'root'

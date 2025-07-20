@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { LocalDatabase } from './local-database.service';
-import { Alquiler } from '../models/alquiler.model';
-import { Propiedad } from '../models/propiedad.model';
-import { Pago } from '../models/pago.model';
+import { Alquiler } from '../interfaces/alquiler.model';
+import { Propiedad } from '../interfaces/propiedad.model';
+import { Pago } from '../interfaces/pago.model';
 
 interface EstadisticaAlquileres {
   totalAlquileres: number;

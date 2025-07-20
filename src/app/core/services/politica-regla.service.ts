@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalDatabase } from './local-database.service';
-import { PoliticaRegla } from '../models/politica-regla.model';
+import { PoliticaRegla } from '../interfaces/politica-regla.model';
 
 @Injectable({
   providedIn: 'root'

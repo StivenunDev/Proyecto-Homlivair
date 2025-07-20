@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalDatabase } from './local-database.service';
-import { MedioPago } from '../models/medio-pago.model';
+import { MedioPago } from '../interfaces/medio-pago.model';
 
 @Injectable({
   providedIn: 'root'

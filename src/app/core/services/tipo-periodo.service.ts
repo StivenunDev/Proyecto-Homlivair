@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalDatabase } from './local-database.service';
-import { TipoPeriodo } from '../models/tipo-periodo.model';
+import { TipoPeriodo } from '../interfaces/tipo-periodo.model';
 
 @Injectable({
   providedIn: 'root'

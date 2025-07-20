@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalDatabase } from './local-database.service';
-import { Reembolso } from '../models/reembolso.model';
+import { Reembolso } from '../interfaces/reembolso.model';
 
 @Injectable({
   providedIn: 'root'

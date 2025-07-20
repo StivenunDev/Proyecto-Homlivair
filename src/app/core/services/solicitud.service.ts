@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalDatabase } from './local-database.service';
-import { Solicitud } from '../models/solicitud.model';
+import { Solicitud } from '../interfaces/solicitud.model';
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalDatabase } from './local-database.service';
-import { PlanCuota } from '../models/plan-cuota.model';
+import { PlanCuota } from '../interfaces/plan-cuota.model';
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalDatabase } from './local-database.service';
-import { TipoPropiedad } from '../models/tipo-propiedad.model';
+import { TipoPropiedad } from '../interfaces/tipo-propiedad.model';
 
 @Injectable({
   providedIn: 'root'

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './component/navbar/navbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { PropertyCardComponent } from './components/property-card/property-card.component';
 import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
 import { ModalComponent } from './components/modal/modal.component';

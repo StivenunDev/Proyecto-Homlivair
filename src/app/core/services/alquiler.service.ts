@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalDatabase } from './local-database.service';
-import { Alquiler } from '../models/alquiler.model';
+import { Alquiler } from '../interfaces/alquiler.model';
 
 @Injectable({
   providedIn: 'root'

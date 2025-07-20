@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalDatabase } from './local-database.service';
-import { Ambiente } from '../models/ambiente.model';
+import { Ambiente } from '../interfaces/ambiente.model';
 
 @Injectable({
   providedIn: 'root'
