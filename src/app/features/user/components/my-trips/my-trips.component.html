@@ -1,1 +1,39 @@
-<p>my-trips works!</p>
+<main class="trips-container">
+    <h1>Viajes</h1>
+    
+    <nav class="sub-nav">
+        <a class="active">Próximos</a>
+        <a>Anteriores</a>
+        <a>Cancelados</a>
+    </nav>
+
+    <div class="trips-list">
+        <div class="trip-card" *ngFor="let trip of trips$ | async">
+        
+            <div class="trip-details">
+                <h3>Propiedad ID: {{ trip.ID_propiedades }}</h3>
+                
+                <p *ngIf="trip.fecha_inicio">
+                    {{ trip.fecha_inicio | date:'dd MMM' }} - {{ trip.fecha_fin | date:'dd MMM, yyyy' }}
+                </p>
+
+                <p class="meta">Solicitud creada el {{ trip.fecha_creacion | date:'dd/MM/yyyy' }}</p>
+            </div>
+
+            <div class="trip-status">
+                <span class="status-tag" [ngClass]="trip.estado_solicitud.toLowerCase()">
+                    {{ trip.estado_solicitud }}
+                </span>
+            </div>
+
+            <div class="trip-actions">
+                <button class="details-btn">Ver detalles</button>
+            </div>
+
+        </div>
+
+        <div *ngIf="(trips$ | async)?.length === 0" class="empty-state">
+            <p>Aún no has realizado ninguna solicitud de viaje.</p>
+        </div>
+    </div>
+</main>

@@ -1,1 +1,34 @@
-<p>manage-properties works!</p>
+<div class="manage-properties-container">
+    <header class="header">
+        <h1>Propiedades</h1>
+        <a routerLink="/host/properties/new" class="add-property-btn">+ Nueva Propiedad</a>
+    </header>
+    <p>Gestiona tus listados de propiedades</p>
+
+    <div class="properties-list">
+        <div class="property-item" *ngFor="let prop of properties$ | async">
+        
+        <img [src]="prop.imagen" alt="{{ prop.titulo_anuncio }}" class="property-image">
+        
+        <div class="property-details">
+            <h3>{{ prop.titulo_anuncio }}</h3>
+            <p>Ubicación ID: {{ prop.ID_ubicacion }}</p>
+            <p class="price">S/ {{ prop.precio_base | number:'1.0-0' }}</p>
+        </div>
+
+        <div class="property-status">
+            <span class="status-tag" [ngClass]="prop.estado_propiedades">{{ prop.estado_propiedades }}</span>
+        </div>
+
+        <div class="property-actions">
+            <label class="switch">
+            <input type="checkbox" [checked]="prop.estado_propiedades === 'disponible'" (change)="togglePropertyStatus(prop, $event)">
+            <span class="slider"></span>
+            </label>
+            <button class="edit-btn">Editar</button>
+            <button class="more-btn">...</button>
+        </div>
+
+        </div>
+    </div>
+</div>

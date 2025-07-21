@@ -1,0 +1,15 @@
+.header { margin-bottom: 24px; }
+.sub-nav { display: flex; gap: 8px; border-bottom: 1px solid #e0e0e0; margin-bottom: 24px; }
+.sub-nav a { padding: 8px 16px; text-decoration: none; color: #666; font-weight: 500; border-bottom: 3px solid transparent; }
+.sub-nav a.active { color: #111; border-bottom-color: #ff5a5f; }
+.payment-list { display: flex; flex-direction: column; gap: 16px; }
+.payment-card { display: flex; align-items: center; background: #fff3e0; border-left: 4px solid #fb8c00; padding: 20px; border-radius: 8px; }
+.payment-icon .icon { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: #fb8c00; color: white; border-radius: 50%; font-weight: bold; font-size: 24px; margin-right: 20px; }
+.payment-details { flex-grow: 1; }
+.payment-details h3 { margin: 0 0 8px; }
+.payment-details p { margin: 0; }
+.payment-details .meta { font-size: 12px; color: #666; }
+.payment-actions button { border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-left: 10px; }
+.verify-btn { background-color: #2e7d32; color: white; }
+.reject-btn { background-color: #d32f2f; color: white; }
+.empty-state { text-align: center; padding: 40px; color: #999; }

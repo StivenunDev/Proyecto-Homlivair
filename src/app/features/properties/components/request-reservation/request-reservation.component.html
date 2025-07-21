@@ -1,0 +1,55 @@
+<div class="container" *ngIf="propiedad$ | async as propiedad; else loading">
+    <div class="back-link">
+        <a [routerLink]="['/properties', propiedad.ID_propiedades]">&lt; Solicita reservar</a>
+    </div>
+    
+    <div class="content-wrapper">
+        <div class="details-column">
+        <section class="trip-details">
+            <h2>Tu viaje</h2>
+            <div class="detail-item">
+            <div>
+                <h3>Fechas</h3>
+                <p>1 ago - 31 ago</p> </div>
+            <a href="#">Edita</a>
+            </div>
+            <div class="detail-item">
+            <div>
+                <h3>Huéspedes</h3>
+                <p>1 huésped</p> </div>
+            <a href="#">Edita</a>
+            </div>
+        </section>
+
+        <hr>
+
+        <button (click)="submitRequest()" class="submit-button">Enviar solicitud</button>
+        </div>
+
+        <aside class="summary-column">
+        <div class="summary-box">
+            <div class="property-summary">
+            <img [src]="'/assets/imagenes/propiedades/'+propiedad.imagen" alt="{{ propiedad.titulo_anuncio }}">
+            <div>
+                <p>{{ propiedad.titulo_anuncio }}</p>
+                <span>Alojamiento entero</span>
+            </div>
+            </div>
+            <hr>
+            <h2>Tu total</h2>
+            <div class="price-breakdown">
+            <span>Precio mensual</span>
+            <span>S/ {{ propiedad.precio_base | number:'1.0-0' }}</span>
+            </div>
+            <div class="price-total">
+            <span>Total</span>
+            <span>S/ {{ propiedad.precio_base | number:'1.0-0' }}</span>
+            </div>
+        </div>
+        </aside>
+    </div>
+    </div>
+
+    <ng-template #loading>
+    <p>Cargando...</p>
+</ng-template>

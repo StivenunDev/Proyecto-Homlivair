@@ -1,0 +1,18 @@
+    .home-container {
+    max-width: 1200px;
+    margin: 32px auto;
+    padding: 0 24px;
+    }
+
+    .properties-grid {
+    display: grid;
+    /* Crea columnas flexibles que se ajustan al tamaño de la pantalla */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px; /* Espacio entre las tarjetas */
+    }
+
+    /* Elimina el subrayado de los enlaces que envuelven las tarjetas */
+    .property-link {
+    text-decoration: none;
+    color: inherit;
+    }

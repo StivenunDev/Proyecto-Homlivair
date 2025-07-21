@@ -1,39 +1,45 @@
 import { Injectable } from '@angular/core';
-import { LocalDatabase } from './local-database.service';
+import { Observable, of } from 'rxjs'; // 1. Importamos Observable y of
+
+// 2. Importamos el SERVICIO central que contiene la base de datos
+import { LocalDatabaseService } from './local-database.service';
 import { Reembolso } from '../interfaces/reembolso.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReembolsoService {
-  private db = new LocalDatabase();
+  // 3. Eliminamos la creación de una instancia privada de la base de datos
+  // private db = new LocalDatabase(); <-- SE ELIMINA
 
-  constructor() {
-    // Datos iniciales (opcional)
-    this.db.insertReembolso({
-      monto_original: 100,
-      monto_reembolsado: 80,
-      estado: 'pendiente'
-    });
+  // 4. Inyectamos el servicio central en el constructor
+  constructor(private databaseService: LocalDatabaseService) {
+    // El constructor debe estar vacío.
   }
 
-  getAllReembolsos(): Reembolso[] {
-    return [...this.db.reembolsos];
+  // 5. Todos los métodos ahora devuelven Observables
+  getAllReembolsos(): Observable<Reembolso[]> {
+    const reembolsos = this.databaseService.db.reembolsos;
+    return of([...reembolsos]);
   }
 
-  getReembolsoById(id: number): Reembolso | undefined {
-    return this.db.getReembolsoById(id);
+  getReembolsoById(id: number): Observable<Reembolso | undefined> {
+    const reembolso = this.databaseService.db.getReembolsoById(id);
+    return of(reembolso);
   }
 
-  createReembolso(reembolso: Partial<Reembolso>): Reembolso {
-    return this.db.insertReembolso(reembolso);
+  createReembolso(reembolso: Partial<Reembolso>): Observable<Reembolso> {
+    const nuevoReembolso = this.databaseService.db.insertReembolso(reembolso);
+    return of(nuevoReembolso);
   }
 
-  updateReembolso(id: number, reembolso: Partial<Reembolso>): boolean {
-    return this.db.updateReembolso(id, reembolso);
+  updateReembolso(id: number, reembolso: Partial<Reembolso>): Observable<boolean> {
+    const resultado = this.databaseService.db.updateReembolso(id, reembolso);
+    return of(resultado);
   }
 
-  deleteReembolso(id: number): boolean {
-    return this.db.deleteReembolso(id);
+  deleteReembolso(id: number): Observable<boolean> {
+    const resultado = this.databaseService.db.deleteReembolso(id);
+    return of(resultado);
   }
 }

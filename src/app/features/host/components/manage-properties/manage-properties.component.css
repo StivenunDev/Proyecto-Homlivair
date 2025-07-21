@@ -1,0 +1,19 @@
+.header { display: flex; justify-content: space-between; align-items: center; }
+.add-property-btn { background-color: #ff5a5f; color: white; border: none; border-radius: 8px; padding: 10px 16px; font-weight: bold; cursor: pointer; }
+.properties-list { margin-top: 30px; display: flex; flex-direction: column; gap: 20px; }
+.property-item { display: flex; align-items: center; background-color: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.property-image { width: 120px; height: 90px; border-radius: 8px; object-fit: cover; margin-right: 16px; }
+.property-details { flex-grow: 1; }
+.property-details h3 { margin: 0 0 4px; }
+.property-details p { margin: 0; color: #666; }
+.property-status { margin: 0 24px; }
+.status-tag { padding: 4px 12px; border-radius: 16px; font-weight: bold; font-size: 12px; text-transform: capitalize; }
+.status-tag.disponible { background-color: #dcfce7; color: #166534; }
+.status-tag.alquilada { background-color: #dbeafe; color: #1e40af; }
+.status-tag.inhabilitada { background-color: #fee2e2; color: #991b1b; }
+.switch { position: relative; display: inline-block; width: 50px; height: 28px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; border-radius: 28px; transition: .4s; }
+.slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px; background-color: white; border-radius: 50%; transition: .4s; }
+input:checked + .slider { background-color: #2563eb; }
+input:checked + .slider:before { transform: translateX(22px); }

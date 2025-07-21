@@ -1,42 +1,45 @@
 import { Injectable } from '@angular/core';
-import { LocalDatabase } from './local-database.service';
+import { Observable, of } from 'rxjs'; // 1. Importamos Observable y of
+
+// 2. Importamos el SERVICIO central que contiene la base de datos
+import { LocalDatabaseService } from './local-database.service';
 import { PoliticaRegla } from '../interfaces/politica-regla.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PoliticaReglaService {
-  private db = new LocalDatabase();
+  // 3. Eliminamos la creación de una instancia privada de la base de datos
+  // private db = new LocalDatabase(); <-- SE ELIMINA
 
-  constructor() {
-    // Datos iniciales (opcional)
-    this.db.insertPoliticaRegla({
-      nombre: 'Política de cancelación',
-      tipo: 'cancelación',
-      descripcion: 'Política de cancelación flexible',
-      valor_1: '5 días antes',
-      valor_2: '50%',
-      activa: true
-    });
+  // 4. Inyectamos el servicio central en el constructor
+  constructor(private databaseService: LocalDatabaseService) {
+    // El constructor debe estar vacío.
   }
 
-  getAllPoliticasReglas(): PoliticaRegla[] {
-    return [...this.db.politicasReglas];
+  // 5. Todos los métodos ahora devuelven Observables
+  getAllPoliticasReglas(): Observable<PoliticaRegla[]> {
+    const politicasReglas = this.databaseService.db.politicasReglas;
+    return of([...politicasReglas]);
   }
 
-  getPoliticaReglaById(id: number): PoliticaRegla | undefined {
-    return this.db.getPoliticaReglaById(id);
+  getPoliticaReglaById(id: number): Observable<PoliticaRegla | undefined> {
+    const politicaRegla = this.databaseService.db.getPoliticaReglaById(id);
+    return of(politicaRegla);
   }
 
-  createPoliticaRegla(politica: Partial<PoliticaRegla>): PoliticaRegla {
-    return this.db.insertPoliticaRegla(politica);
+  createPoliticaRegla(politica: Partial<PoliticaRegla>): Observable<PoliticaRegla> {
+    const nuevaPoliticaRegla = this.databaseService.db.insertPoliticaRegla(politica);
+    return of(nuevaPoliticaRegla);
   }
 
-  updatePoliticaRegla(id: number, politica: Partial<PoliticaRegla>): boolean {
-    return this.db.updatePoliticaRegla(id, politica);
+  updatePoliticaRegla(id: number, politica: Partial<PoliticaRegla>): Observable<boolean> {
+    const resultado = this.databaseService.db.updatePoliticaRegla(id, politica);
+    return of(resultado);
   }
 
-  deletePoliticaRegla(id: number): boolean {
-    return this.db.deletePoliticaRegla(id);
+  deletePoliticaRegla(id: number): Observable<boolean> {
+    const resultado = this.databaseService.db.deletePoliticaRegla(id);
+    return of(resultado);
   }
 }

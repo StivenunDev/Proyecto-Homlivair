@@ -1,1 +1,49 @@
-<p>property-detail works!</p>
+<div *ngIf="propiedad$ | async as propiedad; else loadingOrError" class="detail-container">
+
+    <header class="property-header">
+        <h1>{{ propiedad.titulo_anuncio }}</h1>
+        <p class="location">Ubicación ID: {{ propiedad.ID_ubicacion }}</p>
+    </header>
+
+    <section class="gallery">
+        <img [src]="'/assets/imagenes/propiedades/'+propiedad.imagen" alt="Imagen de {{ propiedad.titulo_anuncio }}" class="main-image">
+        </section>
+
+    <div class="main-content">
+        
+        <div class="info-column">
+        <h2>Descripción</h2>
+        <p>{{ propiedad.descripcion }}</p>
+        <hr>
+        <div class="specs">
+            <span>Máx. Inquilinos: {{ propiedad.max_inquilino }}</span>
+            </div>
+        <hr>
+        <h2>Reglas de la casa</h2>
+        <p>{{ propiedad.reglas }}</p>
+        </div>
+
+        <aside class="booking-box">
+        <h3>
+            <strong>S/ {{ propiedad.precio_base | number:'1.0-0' }}</strong>
+            <span> / {{ propiedad.ID_tipo_periodo === 1 ? 'Día' : 'Mes' }}</span>
+        </h3>
+        
+        <form class="booking-form">
+            <div class="date-inputs">
+            <label for="llegada">LLEGADA</label>
+            <input type="date" id="llegada">
+            
+            <label for="salida">SALIDA</label>
+            <input type="date" id="salida">
+            </div>
+            <a [routerLink]="['/properties', propiedad.ID_propiedades, 'request']" class="primary-button">Solicitar la reserva</a>
+        </form>
+        </aside>
+
+    </div>
+    </div>
+
+    <ng-template #loadingOrError>
+    <p class="loading-text">Cargando detalles de la propiedad...</p>
+</ng-template>

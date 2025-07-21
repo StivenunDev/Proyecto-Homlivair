@@ -1,0 +1,116 @@
+    .detail-container {
+    max-width: 1120px;
+    margin: 40px auto;
+    font-family: sans-serif;
+    padding: 0 24px;
+    }
+
+    .property-header h1 {
+    font-size: 28px;
+    margin: 0 0 8px;
+    }
+
+    .property-header .location {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    text-decoration: underline;
+    cursor: pointer;
+    }
+
+    .gallery {
+    margin-top: 24px;
+    border-radius: 16px;
+    overflow: hidden;
+    }
+
+    .main-image {
+    width: 100%;
+    display: block;
+    }
+
+    .main-content {
+    display: flex;
+    gap: 80px;
+    margin-top: 48px;
+    }
+
+    .info-column {
+    flex-grow: 1;
+    }
+
+    .info-column h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+    }
+
+    .info-column p {
+    line-height: 1.6;
+    color: #444;
+    }
+
+    hr {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 32px 0;
+    }
+
+    .booking-box {
+    width: 380px;
+    flex-shrink: 0;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    align-self: flex-start; /* Evita que la caja se estire */
+    }
+
+    .booking-box h3 {
+    font-size: 22px;
+    margin: 0 0 24px;
+    }
+
+    .booking-form .date-inputs {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    }
+
+    .booking-form label {
+    display: block;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 8px 12px 0;
+    }
+
+    .booking-form input[type="date"] {
+    border: none;
+    padding: 0 12px 8px;
+    font-size: 14px;
+    width: 100%;
+    }
+
+    .date-inputs div {
+    flex: 1;
+    }
+
+    .date-inputs div:first-child {
+    border-right: 1px solid #ccc;
+    }
+
+    .primary-button {
+    width: 100%;
+    padding: 14px;
+    background-color: #ff5a5f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 16px;
+    text-align: center;
+    display: block; /* Para que el <a> se comporte como botón */
+    text-decoration: none;
+    }

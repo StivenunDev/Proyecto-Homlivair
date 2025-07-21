@@ -1,41 +1,45 @@
 import { Injectable } from '@angular/core';
-import { LocalDatabase } from './local-database.service';
+import { Observable, of } from 'rxjs'; // 1. Importamos Observable y of
+
+// 2. Importamos el SERVICIO central que contiene la base de datos
+import { LocalDatabaseService } from './local-database.service';
 import { Persona } from '../interfaces/persona.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonaService {
-  private db = new LocalDatabase();
+  // 3. Eliminamos la creación de una instancia privada de la base de datos
+  // private db = new LocalDatabase(); <-- SE ELIMINA
 
-  constructor() {
-    // Datos iniciales (opcional)
-    this.db.insertPersona({
-      DNI: '12345678',
-      nombre: 'Carlos',
-      apellido_paterno: 'Lopez',
-      apellido_materno: 'Perez',
-      estado: true
-    });
+  // 4. Inyectamos el servicio central en el constructor
+  constructor(private databaseService: LocalDatabaseService) {
+    // El constructor debe estar vacío.
   }
 
-  getAllPersonas(): Persona[] {
-    return [...this.db.personas];
+  // 5. Todos los métodos ahora devuelven Observables
+  getAllPersonas(): Observable<Persona[]> {
+    const personas = this.databaseService.db.personas;
+    return of([...personas]);
   }
 
-  getPersonaById(id: number): Persona | undefined {
-    return this.db.getPersonaById(id);
+  getPersonaById(id: number): Observable<Persona | undefined> {
+    const persona = this.databaseService.db.getPersonaById(id);
+    return of(persona);
   }
 
-  createPersona(persona: Partial<Persona>): Persona {
-    return this.db.insertPersona(persona);
+  createPersona(persona: Partial<Persona>): Observable<Persona> {
+    const nuevaPersona = this.databaseService.db.insertPersona(persona);
+    return of(nuevaPersona);
   }
 
-  updatePersona(id: number, persona: Partial<Persona>): boolean {
-    return this.db.updatePersona(id, persona);
+  updatePersona(id: number, persona: Partial<Persona>): Observable<boolean> {
+    const resultado = this.databaseService.db.updatePersona(id, persona);
+    return of(resultado);
   }
 
-  deletePersona(id: number): boolean {
-    return this.db.deletePersona(id);
+  deletePersona(id: number): Observable<boolean> {
+    const resultado = this.databaseService.db.deletePersona(id);
+    return of(resultado);
   }
 }

@@ -6,6 +6,7 @@ import { PlanCuota } from './plan-cuota.model';
 export class Alquiler {
     private _ID_alquiler: number = 0;
     private _ID_usuario: number | null = null;
+    private _ID_solicitud: number | null = null;
     private _ID_tipo_periodo: number | null = null;
     private _valor_periodo: number | null = null;
     private _fecha_creacion: Date | null = null;
@@ -44,6 +45,17 @@ export class Alquiler {
     set ID_usuario(value: number | null) {
         this._ID_usuario = value;
     }
+
+
+    get ID_solicitud(): number | null {
+        return this._ID_solicitud;
+    }
+
+    set ID_solicitud(value: number | null) {
+        this._ID_solicitud= value;
+    }
+
+
 
     get ID_tipo_periodo(): number | null {
         return this._ID_tipo_periodo;

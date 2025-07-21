@@ -1,0 +1,27 @@
+<div class="reservations-container">
+    <h1>Reservas</h1>
+    <p>Gestiona las solicitudes de reserva y modificaciones</p>
+
+    <div class="requests-list">
+        <div class="request-card" *ngFor="let request of requests$ | async">
+        
+        <div class="request-info">
+            <h3>Propiedad ID: {{ request.ID_propiedades }}</h3>
+            <p>Usuario ID: {{ request.ID_usuario }}</p>
+            <p>Fecha: {{ request.fecha_creacion | date:'dd/MM/yyyy' }}</p>
+            <span class="status" [ngClass]="request.estado_solicitud.toLowerCase()">
+            {{ request.estado_solicitud }}
+            </span>
+        </div>
+
+        <div class="request-actions">
+            <ng-container *ngIf="request.estado_solicitud === 'Pendiente'">
+            <button class="approve-btn" (click)="approveRequest(request.ID_solicitud)">Aceptar</button>
+            <button class="reject-btn" (click)="rejectRequest(request.ID_solicitud)">Rechazar</button>
+            </ng-container>
+            <button class="profile-btn">Ver Perfil</button>
+        </div>
+
+        </div>
+    </div>
+</div>

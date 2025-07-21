@@ -1,40 +1,45 @@
 import { Injectable } from '@angular/core';
-import { LocalDatabase } from './local-database.service';
+import { Observable, of } from 'rxjs'; // 1. Importamos Observable y of
+
+// 2. Importamos el SERVICIO central que contiene la base de datos
+import { LocalDatabaseService } from './local-database.service';
 import { Solicitud } from '../interfaces/solicitud.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SolicitudService {
-  private db = new LocalDatabase();
+  // 3. Eliminamos la creación de una instancia privada de la base de datos
+  // private db = new LocalDatabase(); <-- SE ELIMINA
 
-  constructor() {
-    // Datos iniciales (opcional)
-    this.db.insertSolicitud({
-      tipo_solicitud: 'alquiler',
-      descripcion: 'Solicitud de alquiler de casa',
-      estado_solicitud: 'Pendiente',
-      estado: true
-    });
+  // 4. Inyectamos el servicio central en el constructor
+  constructor(private databaseService: LocalDatabaseService) {
+    // El constructor debe estar vacío.
   }
 
-  getAllSolicitudes(): Solicitud[] {
-    return [...this.db.solicitudes];
+  // 5. Todos los métodos ahora devuelven Observables
+  getAllSolicitudes(): Observable<Solicitud[]> {
+    const solicitudes = this.databaseService.db.solicitudes;
+    return of([...solicitudes]);
   }
 
-  getSolicitudById(id: number): Solicitud | undefined {
-    return this.db.getSolicitudById(id);
+  getSolicitudById(id: number): Observable<Solicitud | undefined> {
+    const solicitud = this.databaseService.db.getSolicitudById(id);
+    return of(solicitud);
   }
 
-  createSolicitud(solicitud: Partial<Solicitud>): Solicitud {
-    return this.db.insertSolicitud(solicitud);
+  createSolicitud(solicitud: Partial<Solicitud>): Observable<Solicitud> {
+    const nuevaSolicitud = this.databaseService.db.insertSolicitud(solicitud);
+    return of(nuevaSolicitud);
   }
 
-  updateSolicitud(id: number, solicitud: Partial<Solicitud>): boolean {
-    return this.db.updateSolicitud(id, solicitud);
+  updateSolicitud(id: number, solicitud: Partial<Solicitud>): Observable<boolean> {
+    const resultado = this.databaseService.db.updateSolicitud(id, solicitud);
+    return of(resultado);
   }
 
-  deleteSolicitud(id: number): boolean {
-    return this.db.deleteSolicitud(id);
+  deleteSolicitud(id: number): Observable<boolean> {
+    const resultado = this.databaseService.db.deleteSolicitud(id);
+    return of(resultado);
   }
 }

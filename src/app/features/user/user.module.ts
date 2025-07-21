@@ -8,12 +8,13 @@ import { MyTripsComponent } from './components/my-trips/my-trips.component';
 
 @NgModule({
   declarations: [
-    AccountSettingsComponent,
-    MyTripsComponent
+    
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    AccountSettingsComponent,
+    MyTripsComponent
   ]
 })
 export class UserModule { }

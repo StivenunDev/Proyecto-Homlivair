@@ -1,1 +1,7 @@
-<p>home-page works!</p>
+<main class="home-container">
+    <section class="properties-grid">
+        <a [routerLink]="['/properties', prop.ID_propiedades]" *ngFor="let prop of propiedades$ | async" class="property-link">
+        <app-property-card [propiedad]="prop"></app-property-card>
+        </a>
+    </section>
+</main>

@@ -1,0 +1,10 @@
+.settings-container { display: flex; max-width: 1024px; margin: 40px auto; font-family: sans-serif; }
+.sidebar { width: 280px; padding-right: 40px; }
+/* ... estilos del menú lateral similares al del panel de anfitrión ... */
+.content-area { flex-grow: 1; }
+.info-list { display: flex; flex-direction: column; }
+.info-item { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; border-bottom: 1px solid #e0e0e0; }
+.info-item .label { display: block; font-size: 14px; color: #666; }
+.info-item .value { font-size: 16px; color: #222; }
+.info-item .no-value { font-size: 16px; color: #999; font-style: italic; }
+.action-link { font-weight: 600; text-decoration: underline; cursor: pointer; }

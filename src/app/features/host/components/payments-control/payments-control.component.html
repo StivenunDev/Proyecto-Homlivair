@@ -1,0 +1,37 @@
+<div class="payments-container">
+    <header class="header">
+        <h1>Pagos</h1>
+        <p>Verifica transacciones y gestiona métodos de pago</p>
+    </header>
+
+    <nav class="sub-nav">
+        <a class="active">Verificación de Pagos</a>
+        <a>Historial</a>
+        <a>Seguimiento de Pagos</a>
+    </nav>
+
+    <div class="payment-list">
+        <div class="payment-card" *ngFor="let payment of pendingPayments$ | async">
+        
+        <div class="payment-icon">
+            <span class="icon">!</span>
+        </div>
+
+        <div class="payment-details">
+            <h3>Pago de alquiler - ID Alquiler: {{ payment.ID_alquiler }}</h3>
+            <p>Monto: <strong>S/ {{ payment.monto_pago | number:'1.2-2' }}</strong></p>
+            <p class="meta">Fecha de pago: {{ payment.fecha_pago | date:'dd/MM/yyyy' }}</p>
+        </div>
+        
+        <div class="payment-actions">
+            <button class="verify-btn" (click)="verifyPayment(payment.ID_pagos)">Verificar</button>
+            <button class="reject-btn" (click)="rejectPayment(payment.ID_pagos)">Rechazar</button>
+        </div>
+
+        </div>
+
+        <div *ngIf="(pendingPayments$ | async)?.length === 0" class="empty-state">
+        <p>No hay pagos pendientes de verificación.</p>
+        </div>
+    </div>
+</div>

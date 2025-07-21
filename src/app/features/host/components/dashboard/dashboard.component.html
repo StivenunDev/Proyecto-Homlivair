@@ -1,1 +1,15 @@
-<p>dashboard works!</p>
+<main class="dashboard-container">
+    <aside class="sidebar">
+        <h2>Gestión de Propiedades</h2>
+        <nav class="sidebar-nav">
+        <a routerLink="./properties" routerLinkActive="active">Propiedades</a>
+        <a routerLink="./reservations" routerLinkActive="active">Reservas</a>
+        <a routerLink="./payments" routerLinkActive="active">Pagos</a>
+        <a routerLink="./rentals" routerLinkActive="active">Alquileres</a>
+        </nav>
+    </aside>
+
+    <section class="content-area">
+        <router-outlet></router-outlet>
+    </section>
+</main>

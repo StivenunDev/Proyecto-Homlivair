@@ -1,38 +1,45 @@
 import { Injectable } from '@angular/core';
-import { LocalDatabase } from './local-database.service';
+import { Observable, of } from 'rxjs'; // 1. Importamos Observable y of
+
+// 2. Importamos el SERVICIO central que contiene la base de datos
+import { LocalDatabaseService } from './local-database.service';
 import { MedioPagoUsuario } from '../interfaces/medio-pago-usuario.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MedioPagoUsuarioService {
-  private db = new LocalDatabase();
+  // 3. Eliminamos la creación de una instancia privada de la base de datos
+  // private db = new LocalDatabase(); <-- SE ELIMINA
 
-  constructor() {
-    // Datos iniciales (opcional)
-    this.db.insertMedioPagoUsuario({
-      codigo_medio_pago: '1234567890',
-      estado: true
-    });
+  // 4. Inyectamos el servicio central en el constructor
+  constructor(private databaseService: LocalDatabaseService) {
+    // El constructor debe estar vacío.
   }
 
-  getAllMediosPagoUsuario(): MedioPagoUsuario[] {
-    return [...this.db.mediosPagoUsuario];
+  // 5. Todos los métodos ahora devuelven Observables
+  getAllMediosPagoUsuario(): Observable<MedioPagoUsuario[]> {
+    const medios = this.databaseService.db.mediosPagoUsuario;
+    return of([...medios]);
   }
 
-  getMedioPagoUsuarioById(id: number): MedioPagoUsuario | undefined {
-    return this.db.getMedioPagoUsuarioById(id);
+  getMedioPagoUsuarioById(id: number): Observable<MedioPagoUsuario | undefined> {
+    const medio = this.databaseService.db.getMedioPagoUsuarioById(id);
+    return of(medio);
   }
 
-  createMedioPagoUsuario(medioPagoUsuario: Partial<MedioPagoUsuario>): MedioPagoUsuario {
-    return this.db.insertMedioPagoUsuario(medioPagoUsuario);
+  createMedioPagoUsuario(medioPagoUsuario: Partial<MedioPagoUsuario>): Observable<MedioPagoUsuario> {
+    const nuevoMedio = this.databaseService.db.insertMedioPagoUsuario(medioPagoUsuario);
+    return of(nuevoMedio);
   }
 
-  updateMedioPagoUsuario(id: number, medioPagoUsuario: Partial<MedioPagoUsuario>): boolean {
-    return this.db.updateMedioPagoUsuario(id, medioPagoUsuario);
+  updateMedioPagoUsuario(id: number, medioPagoUsuario: Partial<MedioPagoUsuario>): Observable<boolean> {
+    const resultado = this.databaseService.db.updateMedioPagoUsuario(id, medioPagoUsuario);
+    return of(resultado);
   }
 
-  deleteMedioPagoUsuario(id: number): boolean {
-    return this.db.deleteMedioPagoUsuario(id);
+  deleteMedioPagoUsuario(id: number): Observable<boolean> {
+    const resultado = this.databaseService.db.deleteMedioPagoUsuario(id);
+    return of(resultado);
   }
 }

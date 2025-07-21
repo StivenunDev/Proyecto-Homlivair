@@ -1,1 +1,31 @@
-<p>login works!</p>
+<div class="login-modal-overlay">
+    <div class="login-modal">
+        <header class="modal-header">
+        <a routerLink="/" class="close-button">&times;</a>
+        <h2>Inicia sesión</h2>
+        </header>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        
+        <div class="form-group">
+            <label for="username">Usuario:</label>
+            <input id="username" type="text" formControlName="nombre_usuario">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input id="password" type="password" formControlName="password">
+        </div>
+
+        <div *ngIf="errorMessage" class="error-banner">
+            {{ errorMessage }}
+        </div>
+
+        <button type="submit" [disabled]="loginForm.invalid" class="submit-button">Continuar</button>
+        </form>
+
+        <footer class="modal-footer">
+        <a routerLink="/auth/register">¿No tienes cuenta?</a>
+        </footer>
+    </div>
+</div>

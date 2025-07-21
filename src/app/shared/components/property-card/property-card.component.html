@@ -1,0 +1,13 @@
+<article class="card" *ngIf="propiedad">
+    <img [src]="'/assets/imagenes/propiedades/'+ propiedad.imagen" loading="lazy" [alt]="propiedad.titulo_anuncio" class="card-image">
+    
+    <div class="card-content">
+        <h3 class="card-title">{{ propiedad.titulo_anuncio }}</h3>
+        
+        <p class="card-location">Ubicación ID: {{ propiedad.ID_ubicacion }}</p>
+        
+        <p class="card-price">
+        <strong>S/ {{ propiedad.precio_base | number:'1.0-0' }}</strong>
+        </p>
+    </div>
+</article>
